@@ -1,4 +1,4 @@
-﻿namespace VaultCommonLibrary.Interfaces
+﻿namespace VaultCommonLibrary
 {
     interface IUser
     {

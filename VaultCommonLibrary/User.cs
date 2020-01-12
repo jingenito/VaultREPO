@@ -1,6 +1,4 @@
-﻿using VaultCommonLibrary.Interfaces;
-
-namespace VaultCommonLibrary
+﻿namespace VaultCommonLibrary
 {
     public class User : IUser
     {
