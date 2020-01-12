@@ -16,10 +16,12 @@ namespace VaultWebService.Controllers
         public VaultCommonLibrary.User Get(string UserName, string Password)
         {
             //will change - this is for testing purposes
+            //obviously username and password wont be hardcoded
+            //and all passwords in the request will be hashed - not plain text
             if(string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(Password))
             {
                 return null;
-            }else if(UserName == "" && Password == "")
+            }else if(UserName == "jingenito" && Password == "secadm")
             {
                 return new VaultCommonLibrary.User(UserName, Password);
             }
