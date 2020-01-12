@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Class Extensions\ObjectExtensions.cs" />
     <Compile Include="ObjectSerializer.cs" />
+    <Compile Include="ObjectSerializerException.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
