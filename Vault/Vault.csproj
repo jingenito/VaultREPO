@@ -56,20 +56,12 @@
       <DependentUpon>AddNew.cs</DependentUpon>
     </Compile>
     <Compile Include="EventArgs\AddNewEventArgs.cs" />
-    <Compile Include="Classes\SerializationType.cs" />
-    <Compile Include="Classes\VaultUser.cs" />
-    <Compile Include="Classes\VaultApplication.cs" />
-    <Compile Include="ClassExtensions\ObjectExtensions.cs" />
-    <Compile Include="Interfaces\IApplication.cs" />
-    <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\ObjectSerializer.cs" />
-    <Compile Include="Exceptions\ObjectSerializerException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VaultMain.cs">

@@ -24,7 +24,6 @@ namespace Vault
             this.Hide();
 
             var frmLogin = new LoginForm();
-            //frmLogin.FormClosed += LoginForm_Closed;
             frmLogin.LoginConfirm += OnLoginConfirm;
             frmLogin.ShowDialog();
         }
@@ -76,7 +75,7 @@ namespace Vault
                 var dt = dgvSource.Copy(); //error if dgvSource belongs to another table
                 ds.Tables.Add(dt);
                 //ObjectSerializer.EncryptSerialize(ds, filename);
-            }catch(ObjectSerializerException ex)
+            }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 err = true;
@@ -98,7 +97,7 @@ namespace Vault
                     //{
                     //    dt = ds.Tables[0];
                     //}
-                }catch(ObjectSerializerException ex)
+                }catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
