@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace VaultWebService.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("WeatherForcastEXAMPLE")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
