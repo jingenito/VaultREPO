@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Vault.WebServiceCommunication;
 
 namespace Vault
 {
@@ -17,17 +18,14 @@ namespace Vault
             var username = txtUsername.Text.Trim();
             var password = txtPassword.Text.Trim();
 
-            //Eventually store username and password in a config file
+            var uri = string.Format("/{0}/{1}",username,password);
+            var response = WebServiceCom.SubmitBodyToWebService(APIType.User, 
+                                                                uri, 
+                                                                WebMethod.GET, 
+                                                                ContentType.JSON, 
+                                                                ContentType.JSON);
 
-            if(username == "jingenito" && password == "secadm")
-            {
-                OnLoginConfirm();
-            }
-            else
-            {
-                MessageBox.Show("Invalid Credentials");
-                txtPassword.Text = "";
-            }
+            
         }
 
         protected void OnLoginConfirm()
