@@ -1,0 +1,63 @@
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Text;
+using VaultCommonLibrary;
+
+namespace Vault.WebServiceCommunication
+{
+    public class WebServiceCom
+    {
+        //private const string WebService = @"https://localhost:44306/api/";
+        private const string Scheme = "https";
+        private const string Host = "localhost";
+        private const int Port = 44306;
+
+        private static Uri APIMapper(APIType api)
+        {
+            var uBuilder = new UriBuilder();
+            uBuilder.Scheme = Scheme;
+            uBuilder.Host = Host;
+            uBuilder.Port = Port;
+            uBuilder.Path = string.Format("api/{0}", api.Description());
+            return uBuilder.Uri;
+        }
+
+        public static string SubmitBodyToWebService(APIType api, 
+                                              string uri, 
+                                              WebMethod method,
+                                              ContentType contentType,
+                                              ContentType acceptType,
+                                              string data = "")
+        {
+            var uBuilder = new UriBuilder(APIMapper(api));
+            uBuilder.Path += uri;
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; //3072
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uBuilder.Uri);
+
+            request.Method = method.Description();
+            request.Accept = acceptType.Description();
+            request.ContentType = contentType.Description();
+            if(method == WebMethod.POST && !string.IsNullOrWhiteSpace(data))
+            {
+                var edata = Encoding.ASCII.GetBytes(data);
+                request.ContentLength = edata.Length;
+                using(var stm = request.GetRequestStream())
+                {
+                    stm.Write(edata, 0, edata.Length);
+                }
+            }
+
+            var response = "";
+            using(var responseStm = request.GetResponse().GetResponseStream())
+            {
+                using(var sReader = new StreamReader(responseStm))
+                {
+                    response = sReader.ReadToEnd();
+                }
+            }
+            return response;
+        }
+    }
+}
