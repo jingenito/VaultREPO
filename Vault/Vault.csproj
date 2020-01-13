@@ -110,5 +110,11 @@
   <ItemGroup>
     <None Include="Images\LoginIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VaultCommonLibrary\VaultCommonLibrary.csproj">
+      <Project>{d862c388-fdbd-44d8-af45-e78df61c4770}</Project>
+      <Name>VaultCommonLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
