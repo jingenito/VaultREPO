@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class Extensions\DataTableExtensions.cs" />
+    <Compile Include="Class Extensions\EnumExtensions.cs" />
     <Compile Include="Class Extensions\ObjectExtensions.cs" />
     <Compile Include="ObjectSerializer.cs" />
     <Compile Include="ObjectSerializerException.cs" />
