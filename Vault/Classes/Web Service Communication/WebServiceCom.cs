@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using VaultCommonLibrary;
+using Newtonsoft.Json;
 
 namespace Vault.WebServiceCommunication
 {
@@ -20,8 +21,17 @@ namespace Vault.WebServiceCommunication
             return uBuilder.Uri;
         }
 
-        public static string SubmitBodyToWebService(APIType api, 
-                                              string uri, 
+        private static string SubmitRequestToWebService(APIType api,
+                                                    string uri,
+                                                    WebMethod method,
+                                                    ContentType contentType,
+                                                    string data = "")
+        {
+            return SubmitRequestToWebService(api, uri, method, contentType, contentType, data);
+        }
+
+        private static string SubmitRequestToWebService(APIType api,
+                                              string uri,
                                               WebMethod method,
                                               ContentType contentType,
                                               ContentType acceptType,
@@ -36,25 +46,41 @@ namespace Vault.WebServiceCommunication
             request.Method = method.Description();
             request.Accept = acceptType.Description();
             request.ContentType = contentType.Description();
-            if(method == WebMethod.POST && !string.IsNullOrWhiteSpace(data))
+            if (method == WebMethod.POST && !string.IsNullOrWhiteSpace(data))
             {
                 var edata = Encoding.ASCII.GetBytes(data);
                 request.ContentLength = edata.Length;
-                using(var stm = request.GetRequestStream())
+                using (var stm = request.GetRequestStream())
                 {
                     stm.Write(edata, 0, edata.Length);
                 }
             }
 
             var response = "";
-            using(var responseStm = request.GetResponse().GetResponseStream())
+            try
             {
-                using(var sReader = new StreamReader(responseStm))
+                using (var responseStm = request.GetResponse().GetResponseStream())
                 {
-                    response = sReader.ReadToEnd();
+                    using (var sReader = new StreamReader(responseStm))
+                    {
+                        response = sReader.ReadToEnd();
+                    }
                 }
             }
+            catch 
+            {
+
+            }
+
             return response;
+        }
+
+        public static User SendLoginRequest(string userName, string password)
+        {
+            var uri = string.Format("/{0}/{1}", userName, password);
+            var response = SubmitRequestToWebService(APIType.User, uri, WebMethod.GET, ContentType.JSON);
+
+            return JsonConvert.DeserializeObject<User>(response);
         }
     }
 }
