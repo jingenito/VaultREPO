@@ -56,6 +56,7 @@
     <Compile Include="AddNew.Designer.cs">
       <DependentUpon>AddNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\GlobalAppInfo.cs" />
     <Compile Include="Classes\Web Service Communication\APIType.cs" />
     <Compile Include="Classes\Web Service Communication\ContentType.cs" />
     <Compile Include="Classes\Web Service Communication\WebMethod.cs" />
