@@ -82,5 +82,10 @@ namespace Vault.WebServiceCommunication
 
             return JsonConvert.DeserializeObject<User>(response);
         }
+
+        public static VaultDataObject SendLoadInfoRequest()
+        {
+            return null;
+        }
     }
 }
