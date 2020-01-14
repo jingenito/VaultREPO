@@ -14,33 +14,33 @@ namespace VaultWebService.Controllers
     {
         // GET: api/VaultData
         [HttpGet]
-        public IEnumerable<VaultDataObject> Get()
+        public IEnumerable<VaultDataObject> GetVaultDataObjects()
         {
             return null;
         }
 
         // GET: api/VaultData/{RecordNumber}
-        [HttpGet("{id}", Name = "Get")]
-        public VaultDataObject Get(int id)
+        [HttpGet("{id}", Name = "GetVaultDataObject")]
+        public VaultDataObject GetVaultDataObject(int id)
         {
             return null;
         }
 
         // POST: api/VaultData
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void PostVaultData([FromBody] string value)
         {
         }
 
         // PUT: api/VaultData/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void PutVaultData(int id, [FromBody] string value)
         {
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteVaultData(int id)
         {
         }
     }

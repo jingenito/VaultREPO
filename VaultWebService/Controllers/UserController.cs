@@ -12,8 +12,8 @@ namespace VaultWebService.Controllers
     public class UserController : ControllerBase
     {
         // GET: api/User/UserName/Password
-        [HttpGet("{UserName}/{Password}", Name = "Get")]
-        public VaultCommonLibrary.User Get(string UserName, string Password)
+        [HttpGet("{UserName}/{Password}", Name = "GetUser")]
+        public VaultCommonLibrary.User GetUser(string UserName, string Password)
         {
             //will change - this is for testing purposes
             //obviously username and password wont be hardcoded
@@ -31,7 +31,7 @@ namespace VaultWebService.Controllers
 
         // POST: api/User
         [HttpPost]
-        public void Post([FromBody] VaultCommonLibrary.IUser user)
+        public void PostUser([FromBody] VaultCommonLibrary.IUser user)
         {
         }
 
