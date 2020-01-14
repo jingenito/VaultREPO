@@ -4,15 +4,15 @@ using System.Net;
 using System.Text;
 using VaultCommonLibrary;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Vault.WebServiceCommunication
 {
     public class WebServiceCom
     {
-        //private const string WebService = @"https://localhost:44306/api/";
         private const string Scheme = "https";
         private const string Host = "localhost";
-        private const int Port = 44306;
+        private const int Port = 44306; //localhost port for the web service
 
         private static Uri APIMapper(APIType api)
         {
@@ -83,9 +83,10 @@ namespace Vault.WebServiceCommunication
             return JsonConvert.DeserializeObject<User>(response);
         }
 
-        public static VaultDataObject SendLoadInfoRequest()
+        public static IEnumerable<VaultDataObject> SendLoadInfoRequest()
         {
-            return null;
+            var response = SubmitRequestToWebService(APIType.VaultData, "", WebMethod.GET, ContentType.JSON);
+            return JsonConvert.DeserializeObject<IEnumerable<VaultDataObject>>(response);
         }
     }
 }
