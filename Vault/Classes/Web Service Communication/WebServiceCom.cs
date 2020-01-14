@@ -80,13 +80,34 @@ namespace Vault.WebServiceCommunication
             var uri = string.Format("/{0}/{1}", userName, password);
             var response = SubmitRequestToWebService(APIType.User, uri, WebMethod.GET, ContentType.JSON);
 
-            return JsonConvert.DeserializeObject<User>(response);
+            User responseUser = null;
+            try
+            {
+                responseUser = JsonConvert.DeserializeObject<User>(response);
+            }
+            catch
+            {
+
+            }
+
+            return responseUser;
         }
 
         public static IEnumerable<VaultDataObject> SendLoadInfoRequest()
         {
             var response = SubmitRequestToWebService(APIType.VaultData, "", WebMethod.GET, ContentType.JSON);
-            return JsonConvert.DeserializeObject<IEnumerable<VaultDataObject>>(response);
+
+            IEnumerable<VaultDataObject> vaultInfo = null;
+            try
+            {
+                vaultInfo = JsonConvert.DeserializeObject<IEnumerable<VaultDataObject>>(response);
+            }
+            catch
+            {
+
+            }
+
+            return vaultInfo;
         }
     }
 }
