@@ -6,6 +6,8 @@
         public string Password { get; set; }
         public string Nickname { get; set; }
 
+        public User() { }
+
         public User(string UserName, string Password)
         {
             this.UserName = UserName;
