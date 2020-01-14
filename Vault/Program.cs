@@ -16,7 +16,7 @@ namespace Vault
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VaultMain());
+            Application.Run(new LoginForm());
         }
     }
 }
