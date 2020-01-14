@@ -16,7 +16,9 @@ namespace VaultWebService.Controllers
         [HttpGet]
         public IEnumerable<VaultDataObject> GetVaultDataObjects()
         {
-            return null;
+            return new VaultDataObject[] { new VaultDataObject(0,"test1@gmail.com","pword1","test1"),
+                                           new VaultDataObject(1,"test2@gmail.com","pword2","test2"),
+                                           new VaultDataObject(2,"test3@gmail.com","pword3","test3")};
         }
 
         // GET: api/VaultData/{RecordNumber}
