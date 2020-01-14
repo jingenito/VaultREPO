@@ -14,7 +14,9 @@ namespace Vault
 
         private void VaultMain_Load(object sender, EventArgs e)
         {
-            ConfigureDGV();
+            if(GlobalAppInfo.User == null) { this.Close(); }
+
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             var colsToHide = new List<string>(new string[] { "RecordNumber" });
 
             var dSource = WebServiceCom.SendLoadInfoRequest();
@@ -26,22 +28,16 @@ namespace Vault
             }
         }
 
-        private void ConfigureDGV()
-        {
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv.AutoGenerateColumns = false;
-
-            var cols = new string[]{ "Email","Password","UserName"};
-            foreach(var c in cols)
-            {
-                dgv.Columns.Add(c,c);
-            }
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var frm = new AddNew();
             frm.ShowDialog();
+        }
+
+        private void buttSignOut_Click(object sender, EventArgs e)
+        {
+            GlobalAppInfo.User = null;
+            this.Close();
         }
     }
 }
