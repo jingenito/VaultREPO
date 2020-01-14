@@ -38,7 +38,9 @@ namespace Vault
 
         protected void OnVaultMain_FormClosed(object sender, EventArgs e)
         {
-            //handle the close event of the main form
+            txtPassword.Text = "";
+            txtUsername.Text = "";
+            txtUsername.Focus();
         }
 
         protected void OnKeyDown(object sender, KeyEventArgs e)
