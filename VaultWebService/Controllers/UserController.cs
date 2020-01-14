@@ -11,19 +11,19 @@ namespace VaultWebService.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        // GET: api/User/UserName/Password
-        [HttpGet("{UserName}/{Password}", Name = "GetUser")]
-        public VaultCommonLibrary.User GetUser(string UserName, string Password)
+        // GET: api/User/Username/Password
+        [HttpGet("{Username}/{Password}", Name = "GetUser")]
+        public VaultCommonLibrary.User GetUser(string Username, string Password)
         {
             //will change - this is for testing purposes
             //obviously username and password wont be hardcoded
             //and all passwords in the request will be hashed - not plain text
-            if(string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(Password))
+            if(string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
                 return null;
-            }else if(UserName == "jingenito" && Password == "secadm")
+            }else if(Username == "jingenito" && Password == "secadm")
             {
-                return new VaultCommonLibrary.User(UserName, Password);
+                return new VaultCommonLibrary.User(Username, Password);
             }
             
             return null;
