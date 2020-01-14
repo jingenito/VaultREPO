@@ -6,11 +6,11 @@ namespace Vault
 {
     public partial class LoginForm : Form
     {
-        public EventHandler LoginConfirm;
-
         public LoginForm()
         {
             InitializeComponent();
+
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -18,23 +18,27 @@ namespace Vault
             var username = txtUsername.Text.Trim();
             var password = txtPassword.Text.Trim();
 
-            var uri = string.Format("/{0}/{1}",username,password);
-            var response = WebServiceCom.SubmitBodyToWebService(APIType.User, 
-                                                                uri, 
-                                                                WebMethod.GET, 
-                                                                ContentType.JSON, 
-                                                                ContentType.JSON);
+            var user = WebServiceCom.SendLoginRequest(username, password);
+            if (user == null)
+            {
+                MessageBox.Show("Incorrect login information.");
+            }
+            else
+            {
+                //set Global User
+                GlobalAppInfo.User = user;
 
-            
+                var frm = new VaultMain();
+                frm.WindowState = FormWindowState.Maximized;
+                frm.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                frm.FormClosed += OnVaultMain_FormClosed;
+                frm.ShowDialog();
+            }
         }
 
-        protected void OnLoginConfirm()
+        protected void OnVaultMain_FormClosed(object sender, EventArgs e)
         {
-            if(LoginConfirm != null)
-            {
-                LoginConfirm(this, new EventArgs());
-                this.Close();
-            }
+            //handle the close event of the main form
         }
 
         protected void OnKeyDown(object sender, KeyEventArgs e)
@@ -43,12 +47,6 @@ namespace Vault
             {
                 btnLogin_Click(btnLogin, new EventArgs());
             }
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            this.txtUsername.KeyDown += OnKeyDown;
-            this.txtPassword.KeyDown += OnKeyDown;
         }
     }
 }
