@@ -21,17 +21,8 @@ namespace Vault
 
         private void VaultMain_Load(object sender, EventArgs e)
         {
-            this.Hide();
-
             var frmLogin = new LoginForm();
-            frmLogin.LoginConfirm += OnLoginConfirm;
             frmLogin.ShowDialog();
-        }
-
-        protected void OnLoginConfirm(object sender, EventArgs e)
-        {
-            this.Show();
-            LoadData();
         }
 
         private void AddColsToDT(ref DataTable dt, params string[] cols)
