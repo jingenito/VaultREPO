@@ -29,99 +29,131 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VaultMain));
+            this.tblLayoutMain = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlButts = new System.Windows.Forms.Panel();
+            this.tblButts = new System.Windows.Forms.TableLayoutPanel();
+            this.buttLoad = new System.Windows.Forms.Button();
+            this.buttSave = new System.Windows.Forms.Button();
+            this.buttAdd = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.pnlButtons = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnLoadFile = new System.Windows.Forms.Button();
+            this.tblLayoutMain.SuspendLayout();
+            this.pnlButts.SuspendLayout();
+            this.tblButts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tblLayoutMain
+            // 
+            this.tblLayoutMain.ColumnCount = 2;
+            this.tblLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblLayoutMain.Controls.Add(this.pnlButts, 0, 0);
+            this.tblLayoutMain.Controls.Add(this.dgv, 0, 1);
+            this.tblLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblLayoutMain.Location = new System.Drawing.Point(0, 0);
+            this.tblLayoutMain.Name = "tblLayoutMain";
+            this.tblLayoutMain.RowCount = 2;
+            this.tblLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tblLayoutMain.Size = new System.Drawing.Size(1190, 783);
+            this.tblLayoutMain.TabIndex = 0;
+            // 
+            // pnlButts
+            // 
+            this.pnlButts.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tblLayoutMain.SetColumnSpan(this.pnlButts, 2);
+            this.pnlButts.Controls.Add(this.tblButts);
+            this.pnlButts.Location = new System.Drawing.Point(290, 15);
+            this.pnlButts.Name = "pnlButts";
+            this.pnlButts.Size = new System.Drawing.Size(609, 125);
+            this.pnlButts.TabIndex = 0;
+            // 
+            // tblButts
+            // 
+            this.tblButts.ColumnCount = 3;
+            this.tblButts.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblButts.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblButts.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblButts.Controls.Add(this.buttAdd, 2, 0);
+            this.tblButts.Controls.Add(this.buttSave, 1, 0);
+            this.tblButts.Controls.Add(this.buttLoad, 0, 0);
+            this.tblButts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblButts.Location = new System.Drawing.Point(0, 0);
+            this.tblButts.Name = "tblButts";
+            this.tblButts.RowCount = 1;
+            this.tblButts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblButts.Size = new System.Drawing.Size(609, 125);
+            this.tblButts.TabIndex = 0;
+            // 
+            // buttLoad
+            // 
+            this.buttLoad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttLoad.Location = new System.Drawing.Point(19, 13);
+            this.buttLoad.Name = "buttLoad";
+            this.buttLoad.Size = new System.Drawing.Size(164, 98);
+            this.buttLoad.TabIndex = 0;
+            this.buttLoad.Text = "Load";
+            this.buttLoad.UseVisualStyleBackColor = true;
+            // 
+            // buttSave
+            // 
+            this.buttSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttSave.Location = new System.Drawing.Point(221, 13);
+            this.buttSave.Name = "buttSave";
+            this.buttSave.Size = new System.Drawing.Size(164, 98);
+            this.buttSave.TabIndex = 1;
+            this.buttSave.Text = "Save";
+            this.buttSave.UseVisualStyleBackColor = true;
+            // 
+            // buttAdd
+            // 
+            this.buttAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttAdd.Location = new System.Drawing.Point(424, 13);
+            this.buttAdd.Name = "buttAdd";
+            this.buttAdd.Size = new System.Drawing.Size(164, 98);
+            this.buttAdd.TabIndex = 2;
+            this.buttAdd.Text = "Add";
+            this.buttAdd.UseVisualStyleBackColor = true;
             // 
             // dgv
             // 
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(0, 89);
-            this.dgv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tblLayoutMain.SetColumnSpan(this.dgv, 2);
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv.Location = new System.Drawing.Point(3, 159);
             this.dgv.Name = "dgv";
-            this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(793, 420);
-            this.dgv.TabIndex = 0;
-            // 
-            // pnlButtons
-            // 
-            this.pnlButtons.Controls.Add(this.btnLoadFile);
-            this.pnlButtons.Controls.Add(this.btnSave);
-            this.pnlButtons.Controls.Add(this.btnAdd);
-            this.pnlButtons.Location = new System.Drawing.Point(162, 11);
-            this.pnlButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(501, 67);
-            this.pnlButtons.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(330, 2);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(149, 54);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(177, 2);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(149, 54);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnLoadFile
-            // 
-            this.btnLoadFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadFile.Location = new System.Drawing.Point(24, 2);
-            this.btnLoadFile.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLoadFile.Name = "btnLoadFile";
-            this.btnLoadFile.Size = new System.Drawing.Size(149, 54);
-            this.btnLoadFile.TabIndex = 2;
-            this.btnLoadFile.Text = "Load File";
-            this.btnLoadFile.UseVisualStyleBackColor = true;
-            this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
+            this.dgv.RowHeadersWidth = 62;
+            this.dgv.RowTemplate.Height = 28;
+            this.dgv.Size = new System.Drawing.Size(1184, 621);
+            this.dgv.TabIndex = 1;
             // 
             // VaultMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 509);
-            this.Controls.Add(this.pnlButtons);
-            this.Controls.Add(this.dgv);
+            this.ClientSize = new System.Drawing.Size(1190, 783);
+            this.Controls.Add(this.tblLayoutMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "VaultMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vault";
             this.Load += new System.EventHandler(this.VaultMain_Load);
+            this.tblLayoutMain.ResumeLayout(false);
+            this.pnlButts.ResumeLayout(false);
+            this.tblButts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            this.pnlButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TableLayoutPanel tblLayoutMain;
+        private System.Windows.Forms.Panel pnlButts;
+        private System.Windows.Forms.TableLayoutPanel tblButts;
+        private System.Windows.Forms.Button buttSave;
+        private System.Windows.Forms.Button buttLoad;
+        private System.Windows.Forms.Button buttAdd;
         private System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.Panel pnlButtons;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnLoadFile;
     }
 }
