@@ -12,12 +12,20 @@ namespace Vault.WebServiceCommunication
     {
         private const string Scheme = "https";
         private const string Host = "localhost";
+        private const bool UsePortNumber = true;
         private const int Port = 44306; //localhost port for the web service
 
         private static Uri APIMapper(APIType api)
         {
-            var uBuilder = new UriBuilder(Scheme, Host, Port, "api/");
-            uBuilder.Path += api.Description();
+            var uBuilder = new UriBuilder();
+            uBuilder.Scheme = Scheme;
+            uBuilder.Host = Host;
+            if (UsePortNumber)
+            {
+                uBuilder.Port = Port;
+            }
+
+            uBuilder.Path = "api/" + api.Description();
             return uBuilder.Uri;
         }
 
