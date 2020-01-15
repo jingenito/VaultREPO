@@ -15,9 +15,9 @@ namespace VaultWebService.Services
     {
         private List<VaultDataObject> _dataObjects = new List<VaultDataObject>
         {
-            new VaultDataObject(1,"test1@gmail.com","test1","pword1"),
-            new VaultDataObject(2,"test2@gmail.com","test2","pword2"),
-            new VaultDataObject(3,"test3@gmail.com","test3","pword3")
+            new VaultDataObject(1,"test1@gmail.com","User1","pword1"),
+            new VaultDataObject(2,"test2@gmail.com","User2","pword2"),
+            new VaultDataObject(3,"test3@gmail.com","User3","pword3")
         };
 
         public async Task<IEnumerable<VaultDataObject>> GetVaultDataObjects()
