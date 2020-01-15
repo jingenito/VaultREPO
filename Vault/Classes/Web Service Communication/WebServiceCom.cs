@@ -16,8 +16,8 @@ namespace Vault.WebServiceCommunication
 
         private static Uri APIMapper(APIType api)
         {
-            var uBuilder = new UriBuilder(Scheme, Host, Port);
-            uBuilder.Path = api.Description();
+            var uBuilder = new UriBuilder(Scheme, Host, Port, "api/");
+            uBuilder.Path += api.Description();
             return uBuilder.Uri;
         }
 
