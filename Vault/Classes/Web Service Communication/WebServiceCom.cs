@@ -16,8 +16,8 @@ namespace Vault.WebServiceCommunication
 
         private static Uri APIMapper(APIType api)
         {
-            var uBuilder = new UriBuilder(Scheme, Host, Port, "api/");
-            uBuilder.Path += api.Description();
+            var uBuilder = new UriBuilder(Scheme, Host, Port);
+            uBuilder.Path = api.Description();
             return uBuilder.Uri;
         }
 
@@ -43,6 +43,15 @@ namespace Vault.WebServiceCommunication
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; //3072
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uBuilder.Uri);
 
+            if (GlobalAppInfo.User != null)
+            {
+                var auth = string.Format("{0}:{1}", GlobalAppInfo.User.Username, GlobalAppInfo.User.Password);
+                var enc = Convert.ToBase64String(Encoding.ASCII.GetBytes(auth));
+                var cred = string.Format("{0} {1}", "Basic", enc);
+
+                request.Headers.Add("Authorization", cred);
+            }
+
             request.Method = method.Description();
             request.Accept = acceptType.Description();
             request.ContentType = contentType.Description();
@@ -67,7 +76,7 @@ namespace Vault.WebServiceCommunication
                     }
                 }
             }
-            catch 
+            catch
             {
 
             }
@@ -77,8 +86,13 @@ namespace Vault.WebServiceCommunication
 
         public static User SendLoginRequest(string userName, string password)
         {
-            var uri = string.Format("/{0}/{1}", userName, password);
-            var response = SubmitRequestToWebService(APIType.User, uri, WebMethod.GET, ContentType.JSON);
+            var user = new { Username = "test", Password = "test" };
+            var jsonData = JsonConvert.SerializeObject(user);
+            var response = SubmitRequestToWebService(APIType.User,
+                                                     "/authenticate",
+                                                     WebMethod.POST,
+                                                     ContentType.JSON,
+                                                     jsonData);
 
             User responseUser = null;
             try
