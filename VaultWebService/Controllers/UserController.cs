@@ -2,49 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace VaultWebService.Controllers
 {
-    [Route("api/User")]
+    [Authorize]
     [ApiController]
-    public class UserController : ControllerBase
+    [Route("api/User")]
+    public class UsersController : ControllerBase
     {
-        // GET: api/User/Username/Password
-        [HttpGet("{Username}/{Password}", Name = "GetUser")]
-        public VaultCommonLibrary.User GetUser(string Username, string Password)
+        private IUserService _userService;
+
+        public UsersController(IUserService userService)
         {
-            //will change - this is for testing purposes
-            //obviously username and password wont be hardcoded
-            //and all passwords in the request will be hashed - not plain text
-            if(string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
-            {
-                return null;
-            }else if(Username == "jingenito" && Password == "secadm")
-            {
-                return new VaultCommonLibrary.User(Username, Password);
-            }
-            
-            return null;
+            _userService = userService;
         }
 
-        // POST: api/User
-        [HttpPost]
-        public void PostUser([FromBody] VaultCommonLibrary.IUser user)
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> Authenticate([FromBody]AuthenticateModel model)
         {
+            var user = await _userService.Authenticate(model.Username, model.Password);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(user);
         }
 
-        // PUT: api/User/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userService.GetAll();
+            return Ok(users);
+        }
     }
 }
