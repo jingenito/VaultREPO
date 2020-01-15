@@ -84,9 +84,9 @@ namespace Vault.WebServiceCommunication
             return response;
         }
 
-        public static User SendLoginRequest(string userName, string password)
+        public static User SendLoginRequest(string username, string password)
         {
-            var user = new { Username = "test", Password = "test" };
+            var user = new { Username = username, Password = password };
             var jsonData = JsonConvert.SerializeObject(user);
             var response = SubmitRequestToWebService(APIType.User,
                                                      "/authenticate",
