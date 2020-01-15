@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VaultCommonLibrary;
 
-namespace VaultWebService
+namespace VaultWebService.Services
 {
     public interface IUserService
     {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using VaultCommonLibrary;
+using VaultWebService.Services;
 
 namespace VaultWebService
 {
